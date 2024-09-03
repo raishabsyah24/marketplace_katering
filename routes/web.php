@@ -10,7 +10,7 @@ use App\Http\Controllers\SessiController;
 use App\Http\Controllers\AdminController;
 
 Route::middleware(['guest'])->group(function (){ 
-    Route::get('/', [SessiController::class, 'index']);
+    Route::get('/', [SessiController::class, 'index'])->name('login');
     Route::post('/', [SessiController::class, 'login']);
 });
 
@@ -19,8 +19,14 @@ Route::get('/home', function(){
 });
 
 
-Route::get('admin', [AdminController::class, 'index']);
-Route::get('logout', [SessiController::class, 'logout']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('admin', [AdminController::class, 'index']);
+    Route::get('admin/guest', [AdminController::class, 'guest']);
+    Route::get('admin/merchant', [AdminController::class, 'merchant']);
+    Route::get('admin/customer', [AdminController::class, 'customer']);
+    Route::get('logout', [SessiController::class, 'logout']);
+});
+
 
 
 
