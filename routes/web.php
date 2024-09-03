@@ -8,11 +8,14 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SessiController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RegisterController;
 
 Route::middleware(['guest'])->group(function (){ 
     Route::get('/', [SessiController::class, 'index'])->name('login');
     Route::post('/', [SessiController::class, 'login']);
 });
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'create']);
 
 Route::get('/home', function(){
     return redirect('/admin');
@@ -21,7 +24,6 @@ Route::get('/home', function(){
 
 Route::middleware(['auth'])->group(function(){
     Route::get('admin', [AdminController::class, 'index']);
-    Route::get('admin/guest', [AdminController::class, 'guest']);
     Route::get('admin/merchant', [AdminController::class, 'merchant']);
     Route::get('admin/customer', [AdminController::class, 'customer']);
     Route::get('logout', [SessiController::class, 'logout']);

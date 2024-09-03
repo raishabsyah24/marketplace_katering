@@ -22,16 +22,9 @@ class DummyUserSeeder extends Seeder
             ],
 
             [
-                'name'=>'Guest',
-                'email'=>'guest@mail.com',
-                'role'=>'guest',
-                'password'=>bcrypt('123456')
-            ],
-
-            [
-                'name'=>'Merchants',
-                'email'=>'merchants@mail.com',
-                'role'=>'merchants',
+                'name'=>'Merchant',
+                'email'=>'merchant@mail.com',
+                'role'=>'merchant',
                 'password'=>bcrypt('123456')
             ],
 

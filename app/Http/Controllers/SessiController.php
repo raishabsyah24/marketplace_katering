@@ -28,8 +28,13 @@ class SessiController extends Controller
         ];
 
         if(Auth::attempt($infologin)) {
-            return redirect('admin');
-            exit();
+           if(Auth::user()->role == 'merchant'){
+            return redirect('/admin/merchant');
+           }elseif (Auth::user()->role == 'customer'){
+            return redirect('/admin/customer');
+           }elseif(Auth::user()->role == 'admin'){
+            return redirect('/admin');
+           }
         } else {
             return redirect('')->withErrors('Username dan Password yang di masukkan tidak sesuai')->withInput();
         }

@@ -9,29 +9,20 @@ class AdminController extends Controller
 {
     function index()
     {
-        echo "hallo, Selamat Datang";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='logout'>Logout</a>";
-    }
-
-    function guest()
-    {
-        echo "hallo, Selamat Datang Guest";
-        echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='logout'>Logout</a>";
+        return view('admin');
     }
 
     function merchant()
     {
-        echo "hallo, Selamat Merchants";
+        echo "hallo, Selamat Datang di halaman Merchants";
         echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='logout'>Logout</a>";
+        echo "<a href='/logout'>Logout</a>";
     }
 
     function customer()
     {
-        echo "hallo, Selamat Datang Customer";
+        echo "hallo, Selamat Datang di halaman Customer";
         echo "<h1>" . Auth::user()->name . "</h1>";
-        echo "<a href='logout'>Logout</a>";
+        echo "<a href='/logout'>Logout</a>";
     }
 }
